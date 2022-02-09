@@ -1,0 +1,134 @@
+<app-header></app-header>
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <alert></alert>
+            <h3>Cadastre-se em nossa plataforma</h3>
+            <p class="blue-text">Preencha os campos abaixo para realizar seu cadastro<br> e aproveitar os benefícios de nossa plataforma.</p>
+            <div class="card">
+                <h5 class="text-center mb-4">Seja bem vindo!</h5>
+                <form class="form-card" [formGroup]="advogadoForm">
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nome<span class="text-danger"> *</span></label> <input name="nome" type="text" minlength="10" maxlength="100" formControlName="nome" placeholder="Informe seu nome"> 
+                            <div *ngIf="f.nome.touched || f.nome.dirty && f.nome.errors">
+                                <span class="text-danger" *ngIf="f.nome.errors?.required">O nome é obrigatório</span>
+                                <span class="text-danger" *ngIf="f.nome.errors?.maxlength">O máximo de caracteres é 100</span>
+                                <span class="text-danger" *ngIf="f.nome.errors?.minlength">O nome deve ter no mínimo 10 caractéres</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Inscrição OAB<span class="text-danger"> *</span></label> <input name="inscricaoOab" minlength="10" maxlength="11" type="text" formControlName="inscricaoOab"  placeholder="Informe o numero da sua OAB"> 
+                            <div *ngIf="f.inscricaoOab.touched || f.inscricaoOab.dirty && f.inscricaoOab.errors">
+                                <span class="text-danger" *ngIf="f.inscricaoOab.errors?.required">A inscricao da OAB é obrigatória</span>
+                                <span class="text-danger" *ngIf="f.inscricaoOab.errors?.maxlength">O máximo de caracteres é 11</span>
+                                <span class="text-danger" *ngIf="f.inscricaoOab.errors?.minlength">A inscricao OAB deve ter no mínimo 10 caractéres</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Cód segurança OAB Digital</label> <input minlength="10" maxlength="20" name="codSeguranca" type="text" formControlName="codSeguranca" placeholder="Caso seja OAB digital informe o código de verificação"> 
+                            <div *ngIf="f.codSeguranca.touched || f.codSeguranca.dirty && f.codSeguranca.errors">                            
+                                <span class="text-danger" *ngIf="f.codSeguranca.errors?.maxlength">O máximo de caracteres é 20</span>
+                                <span class="text-danger" *ngIf="f.codSeguranca.errors?.minlength">A código de segurança deve ter no mínimo 10 caractéres</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Data de Expedição<span class="text-danger"> *</span></label> 
+                            <input name="dataExpedicao" type="date" formControlName="dataExpedicao" placeholder="Data de expedição"> 
+                            <div *ngIf="f.dataExpedicao.touched || f.dataExpedicao.dirty && f.dataExpedicao.errors">
+                                <span class="text-danger" *ngIf="f.dataExpedicao.errors?.required">A data de expedição é obrigatória</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">CEP<span class="text-danger"> * </span></label> 
+                            <input name="cep" type="text" formControlName="cep" (change)="consultaCep()" placeholder="Digite seu CEP"> 
+                            <div *ngIf="f.cep.touched || f.cep.dirty && f.cep.errors">
+                                <span class="text-danger" *ngIf="f.cep.errors?.required">O cep obrigatório</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Cidade<span class="text-danger"> *</span></label> 
+                            <input readonly name="cidade" type="text" formControlName="cidade" placeholder="..."> 
+                            <div *ngIf="f.cidade.touched || f.cidade.dirty && f.cidade.errors">
+                                <span class="text-danger" *ngIf="f.cidade.errors?.required">A cidade é obrigatória</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">UF<span class="text-danger"> *</span></label> 
+                            <input readonly name="uf" type="text" formControlName="uf" placeholder="..."> 
+                            <div *ngIf="f.uf.touched || f.uf.dirty && f.uf.errors">
+                                <span class="text-danger" *ngIf="f.uf.errors?.required">A UF é obrigatória</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Logradouro<span class="text-danger"> *</span></label> 
+                            <input readonly name="logradouro" type="text" formControlName="logradouro" placeholder="..."> 
+                            <div *ngIf="f.logradouro.touched || f.logradouro.dirty && f.logradouro.errors">
+                                <span class="text-danger" *ngIf="f.logradouro.errors?.required">O logradouro é obrigatório</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Complemento<span class="text-danger"> *</span></label> 
+                            <input name="complemento" type="text" formControlName="complemento" placeholder="..."> 
+                            <div *ngIf="f.complemento.touched || f.complemento.dirty && f.complemento.errors">
+                                <span class="text-danger" *ngIf="f.complemento.errors?.required">O Complemento é obrigatório</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Especialização<span class="text-danger"> *</span></label> 
+                            <select name="especializacao" formControlName="especializacao">
+                                <option value="">Selecione</option>
+                                <option value="Cível">Cível</option>
+                                <option value="Criminal">Criminal</option>
+                                <option value="Penal">Penal</option>
+                                <option value="Tributária">Tributária</option>
+                              </select>
+                            <div *ngIf="f.complemento.touched || f.complemento.dirty && f.complemento.errors">
+                                <span class="text-danger" *ngIf="f.complemento.errors?.required">Selecione sua especialização</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Biografia<span class="text-danger"> *</span></label> 
+                            <textarea id="biografia" name="biografia" rows="4" cols="50">
+                                 Descreva aqui a sua trajetória....
+                                </textarea>
+                                <div *ngIf="f.biografia.touched || f.biografia.dirty && f.biografia.errors">
+                                    <span class="text-danger" *ngIf="f.biografia.errors?.required">A Biografia é obrigatória</span>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-sm-6"> <button type="submit" (click)="cadastrar()"  class="btn-block btn-primary">Cadastrar</button> </div>
+                    </div>
+                </form>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--
+
+<div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+        <div class="card">
+            <table class="table table-hover">
+                <thead class="table-primary">
+                    <tr>
+                      <th>Nome</th>
+                      <th>OAB Número</th>
+                      <th>Data de Cadastro</th>
+                      <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a of advogados">
+                        <td>{{a.nome}}</td>
+                        <td>{{a.inscricaoOab}}</td>
+                        <td>{{a.datacadastro}}</td>
+                        <td>
+                            <a href="#" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a>&nbsp;
+                            <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+-->

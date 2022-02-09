@@ -1,0 +1,51 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <div class="row center-align">
+                <h5 class="flow-text blue-text text-darken-4">Faça a sua pergunta aqui</h5>
+                <small class="indigo-text text-accent-2">Preencha com as informações abaixo para ser 
+                    atendido por um advogado e tirar sua dúvida
+                </small>
+            </div>
+            <div class="row">
+                <form [formGroup]="questionForm">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="titulo" type="text" formControlName="titulo" class="validate">
+                            <label for="titulo">Título da pergunta</label>
+                            <div *ngIf="f.titulo.touched || f.titulo.dirty && f.titulo.errors">                            
+                                <span class="helper-text red-text text-accent-4" *ngIf="f.titulo.errors.required">O título é obrigatório</span>
+                                <span class="helper-text red-text text-accent-4" *ngIf="f.titulo.errors.maxlength">O máximo de caracteres é 150</span>
+                                <span class="helper-text red-text text-accent-4" *ngIf="f.titulo.errors.minlength">O título deve ter no mínimo 10 caractéres</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea name="descricao" class="materialize-textarea" formControlName="descricao" data-length="500"></textarea>
+                            <label for="descricao">Descrição do problema</label>
+                            <div *ngIf="f.descricao.touched || f.descricao.dirty && f.descricao.errors">                            
+                                <span class="helper-text red-text text-accent-4" *ngIf="f.descricao.errors.required">A descrição é obrigatória</span>
+                                <span class="helper-text red-text text-accent-4" *ngIf="f.descricao.errors.maxlength">O máximo de caracteres é 500</span>
+                                <span class="helper-text red-text text-accent-4" *ngIf="f.descricao.errors.minlength">A descrição deve ter no mínimo 10 caractéres</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="file-field input-field col s12">
+                            <div class="btn">
+                              <span>Anexar</span>
+                              <input type="file" multiple>
+                            </div>
+                            <div class="file-path-wrapper">
+                              <input class="file-path validate" #file (change)="uploadFile(file.files)" name="anexo" formControlName="anexo" type="file" placeholder="Selecione um ou mais arquivos para anexar">
+                            </div>
+                        </div>
+                    </div>
+                    <button (click)="cadastrar()" class="right btn btn-success waves-effect waves-light">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

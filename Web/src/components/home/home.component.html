@@ -1,0 +1,73 @@
+<header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+        <alert></alert>
+        <div class="row">
+            <div class="col-xl-10 mx-auto"><h1 class="mb-5">Envie sua pergunta e tire suas dúvidas!</h1></div>
+            <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+                <form [formGroup]="questionForm">
+                    <div class="form-row">
+                        <div class="col-12 col-md-9 mb-2 mb-md-1">
+                            <input class="form-control form-control-lg" formControlName="titulo" minLength="10" maxlength="150" type="text" placeholder="Dê um título para sua dúvida..." />
+                            <div *ngIf="f.titulo.touched || f.titulo.dirty && f.titulo.errors">
+                                <span class="text-danger" *ngIf="f.titulo.errors?.required">O título é obrigatório</span>
+                                <span class="text-danger" *ngIf="f.titulo.errors?.maxlength">O máximo de caracteres é 150</span>
+                                <span class="text-danger" *ngIf="f.titulo.errors?.minlength">O título deve ter no mínimo 10 caractéres</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-9 mb-2 mb-md-1">
+                            <textarea class="form-control form-control-lg" formControlName="descricao" minLength="10" maxlength="500" type="email" placeholder="Descreva sua sua dúvida..."></textarea>
+                            <div *ngIf="f.descricao.touched || f.descricao.dirty && f.descricao.errors">
+                                <span class="text-danger" *ngIf="f.descricao.errors?.required">A descrição é obrigatória</span>
+                                <span class="text-danger" *ngIf="f.descricao.errors?.maxlength">O máximo de caracteres é 500</span>
+                                <span class="text-danger" *ngIf="f.descricao.errors?.minlength">A descrição deve ter no mínimo 10 caractéres</span>
+                            </div>
+                        </div>
+                        <!--<div class="col-12 col-md-9 mb-2 mb-md-3">
+                            <label for="">Se precisar inclua um documento em anexo...</label><br/>
+                            <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none">
+                            <button type="button" class="btn btn-xl btn-success" (click)="file.click()">Anexar</button>
+                            <div class="col-md-4">
+                                <span class="upload" *ngIf="progress > 0">
+                                  {{progress}}%
+                                </span>
+                                <span class="upload" *ngIf="message">
+                                  {{message}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="file">File</label>
+                            <input 
+                                formControlName="file"
+                                id="file" 
+                                type="file" 
+                                multiple
+                                class="form-control"
+                                (change)="onFileChange($event)">
+                            <div *ngIf="f.file.touched && f.file.invalid" class="alert alert-danger">
+                                <div *ngIf="f.file.errors.required">File is required.</div>
+                            </div>
+                        </div>-->
+                        <div class="col-12 col-md-9"><button class="btn btn-block btn-lg btn-primary" (click)="cadastrar()" type="submit">Enviar!</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="testimonials text-center bg-light">
+    <div class="container">
+        <h2 class="mb-5">O que as pessoas estão perguntando...</h2>
+        <div class="row">
+            <div class="col-lg-4"  *ngFor="let p of perguntas">
+                <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                    <img class="img-fluid rounded-circle mb-3" src="../../assets/img/question.png" alt="..." />
+                    <h5>{{p.titulo}}</h5>
+                    <p class="font-weight-light mb-0">"{{p.descricao}}"</p>
+                </div>
+            </div>            
+        </div>
+    </div>
+</section>

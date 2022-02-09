@@ -1,0 +1,74 @@
+<app-header></app-header>
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+            <h3>Cadastre-se em nossa plataforma</h3>
+            <p class="blue-text">Preencha os campos abaixo para realizar seu cadastro<br> e aproveitar os benefícios de nossa plataforma.</p>
+            <alert></alert>
+            <div class="card">
+                <h5 class="text-center mb-4">Seja bem vindo!</h5>
+                <form class="form-card" [formGroup]="cadastroClienteForm">
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nome<span class="text-danger"> *</span></label> 
+                            <input minlength="10" maxlength="100" name="nome" type="text" formControlName="nome" placeholder="Informe seu nome"> 
+                            <div *ngIf="f.nome.touched || f.nome.dirty && f.nome.errors">
+                                <span class="text-danger" *ngIf="f.nome.errors?.required">O nome é obrigatório</span>
+                                <span class="text-danger" *ngIf="f.nome.errors?.maxlength">O máximo de caracteres é 100</span>
+                                <span class="text-danger" *ngIf="f.nome.errors?.minlength">O nome deve ter no mínimo 10 caractéres</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> 
+                            <input minlength="10" maxlength="100" name="email" type="text" formControlName="email"  placeholder="Informe seu email"> 
+                            <div *ngIf="f.email.touched || f.email.dirty && f.email.errors">
+                                <span class="text-danger" *ngIf="f.email.errors?.required">O email é obrigatório</span>
+                                <span class="text-danger" *ngIf="f.email.errors?.email">Digite um email válido</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Telefone<span class="text-danger"> *</span></label> 
+                            <input name="telefone" maxlength="11" minlength="10" type="text" formControlName="telefone" placeholder="Informe seu telefone"> 
+                            <div *ngIf="f.telefone.touched || f.telefone.dirty && f.telefone.errors">                                                            
+                                <span class="text-danger" *ngIf="f.telefone.errors?.required">O telefone é obrigatório</span>
+                                <span class="text-danger" *ngIf="f.telefone.errors?.maxlength">O máximo de caracteres é 11</span>
+                                <span class="text-danger" *ngIf="f.telefone.errors?.pattern">Este campo permite apenas números</span><br/>
+                                <span class="text-danger" *ngIf="f.telefone.errors?.minlength">O telefone deve ter no mínimo 10 caractéres</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="form-group col-sm-6"> <button type="submit" [disabled]="cadastroClienteForm.invalid" (click)="salvar()" class="btn-block btn-primary">Cadastrar</button> </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+        <div class="card">
+            <table class="table table-hover">
+                <thead class="table-primary">
+                    <tr>
+                      <th>Nome</th>
+                      <th>Email</th>
+                      <th>Telefone</th>
+                      <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let a in clientes">
+                        <td>{{a.nome}}</td>
+                        <td>{{a.email}}</td>
+                        <td>{{a.telefone}}</td>
+                        <td>
+                            <a href="#" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a>&nbsp;
+                            <a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

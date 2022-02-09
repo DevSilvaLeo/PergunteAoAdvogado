@@ -1,0 +1,9 @@
+E:\JR-Mendonca\SuzanaAdv\SuzanaADV\Api\DataLayer.Dados\bin\Release\netcoreapp3.1\DataLayer.Dados.deps.json
+E:\JR-Mendonca\SuzanaAdv\SuzanaADV\Api\DataLayer.Dados\bin\Release\netcoreapp3.1\DataLayer.Dados.dll
+E:\JR-Mendonca\SuzanaAdv\SuzanaADV\Api\DataLayer.Dados\bin\Release\netcoreapp3.1\DataLayer.Dados.pdb
+E:\JR-Mendonca\SuzanaAdv\SuzanaADV\Api\DataLayer.Dados\obj\Release\netcoreapp3.1\DataLayer.Dados.csprojAssemblyReference.cache
+E:\JR-Mendonca\SuzanaAdv\SuzanaADV\Api\DataLayer.Dados\obj\Release\netcoreapp3.1\DataLayer.Dados.AssemblyInfoInputs.cache
+E:\JR-Mendonca\SuzanaAdv\SuzanaADV\Api\DataLayer.Dados\obj\Release\netcoreapp3.1\DataLayer.Dados.AssemblyInfo.cs
+E:\JR-Mendonca\SuzanaAdv\SuzanaADV\Api\DataLayer.Dados\obj\Release\netcoreapp3.1\DataLayer.Dados.csproj.CoreCompileInputs.cache
+E:\JR-Mendonca\SuzanaAdv\SuzanaADV\Api\DataLayer.Dados\obj\Release\netcoreapp3.1\DataLayer.Dados.dll
+E:\JR-Mendonca\SuzanaAdv\SuzanaADV\Api\DataLayer.Dados\obj\Release\netcoreapp3.1\DataLayer.Dados.pdb
